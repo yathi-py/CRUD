@@ -1,0 +1,30 @@
+
+<h1>
+    {{ heading.headname }}
+</h1>
+<div>
+    <a href="{% url 'product_create' %}">create products</a>
+</div>
+
+<table>
+    <tr>
+        <th> Name </th>
+        <th> Description </th>
+        <th> Price </th>
+        <th>Options</th>
+    </tr>
+
+{% for product in products %}
+
+    <tr>
+        <td> <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+            <a href="{% url 'product_update' product.id %}">update</a>
+            <a href="{% url 'product_delete' product.id %}">delete</a>
+        </td>
+    </tr>
+
+{% endfor %}
+</table>
